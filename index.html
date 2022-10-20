@@ -118,10 +118,20 @@ width: fit-content;
 <div class="button">Попробовать VPN</div>
 </div>
 <div class="action-6">
-<div class="button-1">Возможности robo vpn</div>
+<div id="btn" class="button-1">Возможности robo vpn</div>
 </div>
 </div>
 </div>
 </body>
 
+<script>
+   let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
+
+   tg.expand(); //расширяем на все окно  
+   let btn = document.getElementById("btn");
+   btn.addEventListener('click', function(event){ //вешаем событие на нажатие html-кнопки
+         tg.sendData("some string that we need to send"); 
+      });
+   </script>
+   
 </html>
