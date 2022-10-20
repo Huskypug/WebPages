@@ -6,163 +6,119 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Test Telegram WebApps API</title>
    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
+<style>
+@import url("https://fonts.googleapis.com/css?family=Inter:600");
 
-   <style>
-.2
-{
-width:375px;
-height:812px;
-padding:0px;
-background-color:#000000;
-position:absolute;
-}
-.views/backdrops
-{
-width:375px;
-height:812px;
-padding:0px;
-background-color:#ffffff;
-}
-.background
-{
-width:375px;
-height:812px;
-background-color:#090a0a;
-}
-.backsheet
-{
-width:343px;
-height:10px;
-left:16px;
-top:44px;
-position:absolute;
-}
-.frontsheet
-{
-width:375px;
-height:758px;
-left:0px;
-top:54px;
-position:absolute;
-}
-.rectangle281
-{
-width:375px;
-height:708px;
-background-color:#ffffff;
-}
-.action5
-{
-width:287px;
-height:48px;
-border-radius:12px;
-padding-left:16px;
-padding-right:16px;
-padding-top:12px;
-padding-bottom:12px;
-display:flex;
-flex-direction:row;
-flex-wrap:nowrap;
-justify-content:center;
-align-items:center;
-gap:8px;
-position:absolute;
-background-color:#6e6ce9;
-left:46px;
-top:641px;
-}
-.button
-{
-text-align:left;
-vertical-align:text-top;
-font-size:20px;
-font-family:Inter;
-align-self:flex-start;
-left:53px;
-top:12px;
-position:absolute;
-line-height:auto;
-color:#ffffff;
-width:181px;
-}
-.action6
-{
-width:287px;
-height:48px;
-border-radius:12px;
-padding-left:16px;
-padding-right:16px;
-padding-top:12px;
-padding-bottom:12px;
-display:flex;
-flex-direction:row;
-flex-wrap:nowrap;
-justify-content:center;
-align-items:center;
-gap:8px;
-position:absolute;
-border:1px solid #6e6ce9;
-top:703px;
-left:46px;
-}
-.button2
-{
-text-align:left;
-vertical-align:text-top;
-font-size:20px;
-font-family:Inter;
-align-self:flex-start;
-left:29px;
-top:12px;
-position:absolute;
-line-height:auto;
-color:#6e6ce9;
-width:229px;
-}
-.views/progressbars
-{
-width:284px;
-height:4px;
-border-radius:100px;
-padding:0px;
-background-color:#6e6ce9;
-top:136px;
-left:46px;
-position:absolute;
-}
-.indicator
-{
-border-radius:100px;
-width:28.400001525878906px;
-height:4px;
-background-color:#ffffff;
+:root {
+--black: rgba(0,0,0,1);
+--moody-blue: rgba(110,108,233,1);
+--white: rgba(255,255,255,1);
+--font-size-m: 20px;
+--font-family-inter: "Inter";
 }
 
-   </style>
+.x102 {
+align-items: flex-start;
+background-color: var(--black);
+border: 1px none;
+display: flex;
+height: 812px;
+width: 375px;
+}
+.hidden,
+.hidden * {
+pointer-events: none;
+visibility: hidden;
+}
+.overlap-group {
+align-items: flex-end;
+background-color: var(--white);
+display: flex;
+flex-direction: column;
+min-height: 812px;
+padding: 61px 42px;
+width: 375px;
+}
+.view-progress-bars {
+align-items: flex-start;
+align-self: center;
+background-color: var(--moody-blue);
+border: 1px none;
+border-radius: 100px;
+display: flex;
+margin-left: 1px;
+margin-top: 75px;
+overflow: hidden;
+width: 284px;
+}
+.indicator{
+background-color: var(--white);
+border: 1px none;
+border-radius: 100px;
+height: 4px;
+width: 28px;
+}
+.action-6 {
+align-items: center;
+border: 1px solid;
+border-color: var(--moody-blue);
+border-radius: 12px;
+display: flex;
+gap: 8px;
+height: 48px;
+justify-content: center;
+margin-top: 14px;
+overflow: hidden;
+padding: 12px 16px;
+width: 287px;
+}
+.action-5 {
+align-items: center;
+border: 1px none;
+border-color: var(--moody-blue);
+border-radius: 12px;
+display: flex;
+gap: 8px;
+height: 48px;
+justify-content: center;
+margin-top: 501px;
+overflow: hidden;
+padding: 12px 16px;
+width: 287px;
+}
+.button-1 {
+color: var(--moody-blue);
+font-family: var(--font-family-inter);
+font-size: var(--font-size-m);
+font-weight: 600;
+letter-spacing: 0;
+margin-top: -1px;
+width: fit-content;
+}
+.button {
+color: var(--white);
+font-family: var(--font-family-inter);
+font-size: var(--font-size-m);
+font-weight: 600;
+letter-spacing: 0;
+margin-top: -1px;
+width: fit-content;
+}
+</style>
+
 </head>
 
 <body>
-   <div id='2' class='2'>
-<div id='views/backdrops' class='views/backdrops'>
-<div id='background' class='background'>
+ <div class="x102 screen">
+<div class="overlap-group">
+<div class="views-progress-bars">
+<div class="indicator"></div>
 </div>
-<img id='backsheet' class='backsheet' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAAAKCAYAAAAAVh2FAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAClSURBVHgB7dhBDcJAEAXQWQTgAAUoQAEVUAkoAB04QAJCMIADMICBsgMlISQcgOX2XvKz7e79ZzIlXgzDsKjHsqarmQUA7xzHbEspp+eH8viopTqtx6ZmFQB8ahf3kr3kz61cx2Ld18wDgG/lFNtnwU7Gi5xYFSvAb7JHs0+j1Kk196qHAKCVPifXdQDQ0jLL1ToAoK0u1wLnAKCpSQDQnHIF+IMrAI0dkPPods0AAAAASUVORK5CYII='/>
-</img>
-<img id='frontsheet' class='frontsheet' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXcAAAL2CAYAAAC6xNYeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAArhSURBVHgB7dhbTUNBFEDRuVWAhEpAAlXQSsFBgwMcYQEHIAEHZQZKQlBAd9ZKTuY+/ndOZht/XC6Xh3kc55zm7AcA/9XrdZ62bXv//WP7eZhRv5vHec7jAODWPI/vyH+sl6+4X8P+Mud+AHCr1hZ/WIHfXT+sjV3YAW7b6vjq+djm1r6f59sAoOKwNvfzAKDktOLuOgag5biuZS4DgJTdACBH3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYI+AcmBI80WXZ3bAAAAAElFTkSuQmCC'/>
-</img>
+<div class="action-5">
+<div class="button">Попробовать VPN</div>
 </div>
-<div id='rectangle281' class='rectangle281'>
-</div>
-<div id='action5' class='action5'>
-<button id='button' class='button'>
-Попробовать ВПН</button>
-</div>
-<div id='action6' class='action6'>
-<button id='button2' class='button2'>
-Возможности robo vpn</button>
-</div>
-<div id='views/progressbars' class='views/progressbars'>
-<div id='indicator' class='indicator'>
+<div class="action-6">
+<div class="button-1">Возможности robo vpn</div>
 </div>
 </div>
 </div>
