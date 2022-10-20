@@ -8,113 +8,164 @@
    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
 
    <style>
-      body{
-         color: var(--tg-theme-text-color);
-         background: var(--tg-theme-bg-color);
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         font-size: 18px;
-      }
+.2
+{
+width:375px;
+height:812px;
+padding:0px;
+background-color:#000000;
+position:absolute;
+}
+.views/backdrops
+{
+width:375px;
+height:812px;
+padding:0px;
+background-color:#ffffff;
+}
+.background
+{
+width:375px;
+height:812px;
+background-color:#090a0a;
+}
+.backsheet
+{
+width:343px;
+height:10px;
+left:16px;
+top:44px;
+position:absolute;
+}
+.frontsheet
+{
+width:375px;
+height:758px;
+left:0px;
+top:54px;
+position:absolute;
+}
+.rectangle281
+{
+width:375px;
+height:708px;
+background-color:#ffffff;
+}
+.action5
+{
+width:287px;
+height:48px;
+border-radius:12px;
+padding-left:16px;
+padding-right:16px;
+padding-top:12px;
+padding-bottom:12px;
+display:flex;
+flex-direction:row;
+flex-wrap:nowrap;
+justify-content:center;
+align-items:center;
+gap:8px;
+position:absolute;
+background-color:#6e6ce9;
+left:46px;
+top:641px;
+}
+.button
+{
+text-align:left;
+vertical-align:text-top;
+font-size:20px;
+font-family:Inter;
+align-self:flex-start;
+left:53px;
+top:12px;
+position:absolute;
+line-height:auto;
+color:#ffffff;
+width:181px;
+}
+.action6
+{
+width:287px;
+height:48px;
+border-radius:12px;
+padding-left:16px;
+padding-right:16px;
+padding-top:12px;
+padding-bottom:12px;
+display:flex;
+flex-direction:row;
+flex-wrap:nowrap;
+justify-content:center;
+align-items:center;
+gap:8px;
+position:absolute;
+border:1px solid #6e6ce9;
+top:703px;
+left:46px;
+}
+.button2
+{
+text-align:left;
+vertical-align:text-top;
+font-size:20px;
+font-family:Inter;
+align-self:flex-start;
+left:29px;
+top:12px;
+position:absolute;
+line-height:auto;
+color:#6e6ce9;
+width:229px;
+}
+.views/progressbars
+{
+width:284px;
+height:4px;
+border-radius:100px;
+padding:0px;
+background-color:#6e6ce9;
+top:136px;
+left:46px;
+position:absolute;
+}
+.indicator
+{
+border-radius:100px;
+width:28.400001525878906px;
+height:4px;
+background-color:#ffffff;
+}
 
-      .hint{
-         color: var(--tg-theme-hint-color);
-      }
-
-      .link{
-         color: var(--tg-theme-link-color);
-      }
-
-      .button{
-         background: var(--tg-theme-button-color);
-         color: var(--tg-theme-button-text-color);
-         border: none;
-         font-size: 18px;
-      }
-
-      .button:not(:last-child){
-         margin-bottom: 20px
-      }
-
-      #usercard{
-         text-align: center;
-      }
    </style>
 </head>
 
 <body>
-   <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
-   </div>
-   <p>Браузер в телеге</p> <!--Просто текст для проверки-->
-   <a class="link" href="https://google.ru">Я ссылка</a> <!--Просто ссылка для проверки-->
-   <p class="hint">По ссылке откроется гугл</p> <!--Просто текст-подсказка для проверки-->
-   <button id="btnTG" class="button">Отправить что-то в бота</button> <!--Кнопка, чтобы скрыть / показать основную кнопку-->
-   <button id="btn" class="button">Show/Hide Main Button</button> <!--Кнопка, чтобы скрыть / показать основную кнопку-->
-   <button id="btnED" class="button">Enable/Disable Main Button</button> <!--Кнопка, чтобы сделать кнопку активной/неактивной-->
+   <div id='2' class='2'>
+<div id='views/backdrops' class='views/backdrops'>
+<div id='background' class='background'>
+</div>
+<img id='backsheet' class='backsheet' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVcAAAAKCAYAAAAAVh2FAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAClSURBVHgB7dhBDcJAEAXQWQTgAAUoQAEVUAkoAB04QAJCMIADMICBsgMlISQcgOX2XvKz7e79ZzIlXgzDsKjHsqarmQUA7xzHbEspp+eH8viopTqtx6ZmFQB8ahf3kr3kz61cx2Ld18wDgG/lFNtnwU7Gi5xYFSvAb7JHs0+j1Kk196qHAKCVPifXdQDQ0jLL1ToAoK0u1wLnAKCpSQDQnHIF+IMrAI0dkPPods0AAAAASUVORK5CYII='/>
+</img>
+<img id='frontsheet' class='frontsheet' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXcAAAL2CAYAAAC6xNYeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAArhSURBVHgB7dhbTUNBFEDRuVWAhEpAAlXQSsFBgwMcYQEHIAEHZQZKQlBAd9ZKTuY+/ndOZht/XC6Xh3kc55zm7AcA/9XrdZ62bXv//WP7eZhRv5vHec7jAODWPI/vyH+sl6+4X8P+Mud+AHCr1hZ/WIHfXT+sjV3YAW7b6vjq+djm1r6f59sAoOKwNvfzAKDktOLuOgag5biuZS4DgJTdACBH3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYLEHSBI3AGCxB0gSNwBgsQdIEjcAYI+AcmBI80WXZ3bAAAAAElFTkSuQmCC'/>
+</img>
+</div>
+<div id='rectangle281' class='rectangle281'>
+</div>
+<div id='action5' class='action5'>
+<button id='button' class='button'>
+Попробовать ВПН</button>
+</div>
+<div id='action6' class='action6'>
+<button id='button2' class='button2'>
+Возможности robo vpn</button>
+</div>
+<div id='views/progressbars' class='views/progressbars'>
+<div id='indicator' class='indicator'>
+</div>
+</div>
+</div>
 </body>
 
-<script>
-   let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-
-   tg.expand(); //расширяем на все окно
-
-   tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
-   tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
-   tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
-   tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
-   tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры
-
-   let btn = document.getElementById("btn"); //получаем кнопку скрыть/показать
-
-   btn.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
-      if (tg.MainButton.isVisible){ //если кнопка показана
-         tg.MainButton.hide() //скрываем кнопку
-      }
-      else{ //иначе
-         tg.MainButton.show() //показываем
-      }
-   });
-
-   let btnED = document.getElementById("btnED"); //получаем кнопку активировать/деактивировать
-   btnED.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
-      if (tg.MainButton.isActive){ //если кнопка показана
-         tg.MainButton.setParams({"color": "#E0FFFF"}); //меняем цвет
-         tg.MainButton.disable() //скрываем кнопку
-      }
-      else{ //иначе
-         tg.MainButton.setParams({"color": "#143F6B"}); //меняем цвет
-         tg.MainButton.enable() //показываем
-      }
-   });
-
-   let btnTG = document.getElementById("btnTG"); //получаем кнопку активировать/деактивировать
-   btnTG.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
-        tg.sendData("Test button clicked");
-   });
-
-   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData("some string that we need to send");
-      //при клике на основную кнопку отправляем данные в строковом виде
-   });
-
-
-   let usercard = document.getElementById("usercard"); //получаем блок usercard
-
-   let profName = document.createElement('p'); //создаем параграф
-   profName.innerText = `${tg.initDataUnsafe.user.first_name}
-   ${tg.initDataUnsafe.user.last_name}
-   ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
-   //выдем имя, "фамилию", через тире username и код языка
-   usercard.appendChild(profName); //добавляем
-
-   let userid = document.createElement('p'); //создаем еще параграф
-   userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
-   usercard.appendChild(userid); //добавляем
-
-
-   //работает только в attachment menu
-   // let pic = document.createElement('img'); //создаем img
-   // pic.src = tg.initDataUnsafe.user.photo_url; //задаём src
-   // usercard.appendChild(pic); //добавляем элемент в карточку
-</script>
 </html>
