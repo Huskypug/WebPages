@@ -1,137 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Test Telegram WebApps API</title>
-   <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
-<style>
-@import url("https://fonts.googleapis.com/css?family=Inter:600");
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Telegram WebApps API</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
 
-:root {
---black: rgba(0,0,0,1);
---moody-blue: rgba(110,108,233,1);
---white: rgba(255,255,255,1);
---font-size-m: 20px;
---font-family-inter: "Inter";
-}
+    <style>
+        body{
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 18px;
+        }
 
-.x102 {
-align-items: flex-start;
-background-color: var(--black);
-border: 1px none;
-display: flex;
-height: 708px;
-width: 375px;
-}
-.hidden,
-.hidden * {
-pointer-events: none;
-visibility: hidden;
-}
-.overlap-group {
-align-items: flex-end;
-background-color: var(--white);
-display: flex;
-flex-direction: column;
-min-height: 708px;
-padding: 61px 42px;
-width: 375px;
-}
-.view-progress-bars {
-align-items: flex-start;
-align-self: center;
-background-color: var(--moody-blue);
-border: 1px none;
-border-radius: 100px;
-display: flex;
-margin-left: 1px;
-margin-top: 75px;
-overflow: hidden;
-width: 284px;
-}
-.indicator{
-background-color: var(--white);
-border: 1px none;
-border-radius: 100px;
-height: 4px;
-width: 28px;
-}
-.action-6 {
-align-items: center;
-border: 1px solid;
-border-color: var(--moody-blue);
-border-radius: 12px;
-display: flex;
-gap: 8px;
-height: 48px;
-justify-content: center;
-margin-top: 14px;
-overflow: hidden;
-padding: 12px 16px;
-width: 287px;
-}
-.action-5 {
-align-items: center;
-border: 1px none;
-border-color: var(--moody-blue);
-border-radius: 12px;
-display: flex;
-gap: 8px;
-height: 48px;
-justify-content: center;
-margin-top: 501px;
-overflow: hidden;
-padding: 12px 16px;
-width: 287px;
-}
-.button-1 {
-color: var(--moody-blue);
-font-family: var(--font-family-inter);
-font-size: var(--font-size-m);
-font-weight: 600;
-letter-spacing: 0;
-margin-top: -1px;
-width: fit-content;
-}
-.button {
-color: var(--white);
-font-family: var(--font-family-inter);
-font-size: var(--font-size-m);
-font-weight: 600;
-letter-spacing: 0;
-margin-top: -1px;
-width: fit-content;
-}
-</style>
+        .hint{
+            color: var(--tg-theme-hint-color);
+        }
 
+        .text{
+            color: var(--tg-theme-text-color);
+        }
+
+        .button{
+            background: var(--tg-theme-button-color);
+            color: var(--tg-theme-button-text-color);
+            border: none;
+            font-size: 18px;
+        }
+
+        .button:not(:last-child){
+            margin-bottom: 20px
+        }
+
+        #usercard{
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
- <div class="x102 screen">
-<div class="overlap-group">
-<div class="views-progress-bars">
-<div class="indicator"></div>
+<div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
 </div>
-<div class="action-5">
-<div class="button">Попробовать VPN</div>
-</div>
-<div class="action-6">
-<div id="btn" class="button-1">Возможности robo vpn</div>
-</div>
-</div>
-</div>
+<p class="text">Форма создания карточки</p> <!--Просто текст для проверки-->
+<form>
+    <label class="hint" for="customer">Заказчик</label><br>
+    <select id="customer" name="customer" size="4">
+        <option value="alico">alico</option>
+        <option value="alphas">alphas</option>
+        <option value="asv">asv</option>
+        <option value="cdi">cdi</option>
+    </select><br>
+    <label class="hint" for="channel">Канал</label><br>
+    <select id="channel" name="channel" size="4">
+        <option value="мониторинг">мониторинг</option>
+        <option value="почта">почта</option>
+        <option value="jira">jira</option>
+        <option value="коллега">коллега</option>
+    </select><br>
+    <label class="hint" for="desc">Описание</label><br>
+    <input type="text" id="desc" name="desc"><br>
+    <label class="hint" for="descadd">Подробное Описание</label><br>
+    <input type="text" id="descadd" name="descadd"><br>
+    <label class="hint" for="person">На кого сразу двинуть</label><br>
+    <select id="person" name="person" size="4">
+        <option value="Петя">Петя</option>
+        <option value="Паша">Паша</option>
+        <option value="Настя">Настя</option>
+        <option value="Макс">Макс</option>
+    </select><br>
+</form>
 </body>
 
 <script>
-   let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
+    let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 
-   tg.expand(); //расширяем на все окно  
-   let btn = document.getElementById("btn");
-   btn.addEventListener('click', function(event){ //вешаем событие на нажатие html-кнопки
-         tg.sendData("some string that we need to send"); 
-      });
-   </script>
-   
+    tg.expand(); //расширяем на все окно
+
+    tg.MainButton.text = "Submmit"; //изменяем текст кнопки
+    tg.MainButton.show()
+    tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
+    tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
+
+    let btn = document.getElementById("btn"); //получаем кнопку скрыть/показать
+
+    btn.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
+        if (tg.MainButton.isVisible){ //если кнопка показана
+            tg.MainButton.hide() //скрываем кнопку
+        }
+        else{ //иначе
+            tg.MainButton.show() //показываем
+        }
+    });
+
+
+    Telegram.WebApp.onEvent('mainButtonClicked', function(){
+        let fullstr = '';
+        fullstr += document.getElementById("customer").value;
+        fullstr += ',';
+        fullstr += document.getElementById("channel").value;
+        fullstr += ',';
+        fullstr += document.getElementById("desc").value;
+        fullstr += ',';
+        fullstr += document.getElementById("descadd").value;
+        fullstr += ',';
+        fullstr += document.getElementById("person").value;
+        tg.sendData(fullstr);
+        //при клике на основную кнопку отправляем данные в строковом виде
+    });
+
+
+    let usercard = document.getElementById("usercard"); //получаем блок usercard
+    let userid = document.createElement('p'); //создаем еще параграф
+    userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
+    usercard.appendChild(userid); //добавляем
+
+</script>
 </html>
