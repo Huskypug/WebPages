@@ -99,17 +99,7 @@
 
 
     Telegram.WebApp.onEvent('mainButtonClicked', function(){
-        let fullstr = '';
-        fullstr += document.getElementById("customer").value;
-        fullstr += ',';
-        fullstr += document.getElementById("channel").value;
-        fullstr += ',';
-        fullstr += document.getElementById("desc").value;
-        fullstr += ',';
-        fullstr += document.getElementById("descadd").value;
-        fullstr += ',';
-        fullstr += document.getElementById("person").value;
-        tg.sendData(fullstr);
+        tg.sendData("response");
         //при клике на основную кнопку отправляем данные в строковом виде
     });
 
