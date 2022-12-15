@@ -1,96 +1,39 @@
+<!--
+    Simple static Telegram WebApp. Does not verify the WebAppInitData, as a bot token would be needed for that.
+-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Telegram WebApps API</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
-
-    <style>
-        body{
-            color: var(--tg-theme-text-color);
-            background: var(--tg-theme-bg-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 18px;
-        }
-
-        .hint{
-            color: var(--tg-theme-hint-color);
-        }
-
-        .text{
-            color: var(--tg-theme-text-color);
-        }
-
-        .button{
-            background: var(--tg-theme-button-color);
-            color: var(--tg-theme-button-text-color);
-            border: none;
-            font-size: 18px;
-        }
-
-        .button:not(:last-child){
-            margin-bottom: 20px
-        }
-
-        #usercard{
-            text-align: center;
-        }
-    </style>
+    <title>python-telegram-bot Example WebApp</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 </head>
-
-<body>
-<div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
-</div>
-<p class="text">Форма создания карточки</p> <!--Просто текст для проверки-->
-<form>
-    <label class="hint" for="customer">Заказчик</label><br>
-    <select id="customer" name="customer" size="4">
-        <option value="alico">alico</option>
-        <option value="alphas">alphas</option>
-        <option value="asv">asv</option>
-        <option value="cdi">cdi</option>
-    </select><br>
-    <label class="hint" for="channel">Канал</label><br>
-    <select id="channel" name="channel" size="4">
-        <option value="мониторинг">мониторинг</option>
-        <option value="почта">почта</option>
-        <option value="jira">jira</option>
-        <option value="коллега">коллега</option>
-    </select><br>
-    <label class="hint" for="desc">Описание</label><br>
-    <input type="text" id="desc" name="desc"><br>
-    <label class="hint" for="descadd">Подробное Описание</label><br>
-    <input type="text" id="descadd" name="descadd"><br>
-    <label class="hint" for="person">На кого сразу двинуть</label><br>
-    <select id="person" name="person" size="4">
-        <option value="Петя">Петя</option>
-        <option value="Паша">Паша</option>
-        <option value="Настя">Настя</option>
-        <option value="Макс">Макс</option>
-    </select><br>
-</form>
-</body>
-
-<script>
-    let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-
-    tg.expand(); //расширяем на все окно
-
-    tg.MainButton.text = "Submmit"; //изменяем текст кнопки
-    tg.MainButton.show()
-    tg.MainButton.enable() //показываем 
-    tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
-    tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
-
-
-    Telegram.WebApp.onEvent('mainButtonClicked', function(){
-        tg.sendData("response");
-        //при клике на основную кнопку отправляем данные в строковом виде
+<script type="text/javascript">
+    const colorPicker = new iro.ColorPicker('#picker', {
+        borderColor: "#ffffff",
+        borderWidth: 1,
+        width: Math.round(document.documentElement.clientWidth / 2),
+    });
+    colorPicker.on('color:change', function (color) {
+        document.body.style.background = color.hexString;
     });
 
+    Telegram.WebApp.ready();
+    Telegram.WebApp.MainButton.setText('Choose Color').show().onClick(function () {
+        const data = JSON.stringify({hex: colorPicker.color.hexString, rgb: colorPicker.color.rgb});
+        Telegram.WebApp.sendData(data);
+        Telegram.WebApp.close();
+    });
+</script>
+<body style="background-color: #ffffff">
+<div style="position: absolute; margin-top: 5vh; margin-left: 5vw; height: 90vh; width: 90vw; border-radius: 5vh; background-color: var(--tg-theme-bg-color); box-shadow: 0 0 2vw
+ #000000;">
+    <div id="picker"
+         style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%"></div>
+</div>
+</body>
+<script type="text/javascript">
+    Telegram.WebApp.expand();
 </script>
 </html>
