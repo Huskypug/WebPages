@@ -92,9 +92,13 @@
 
   sendRequest("https://bot.humanfactorlabs.ru/setup_data");
 
+  function form_close() {
+    tg.close();
+    return false;
+  }
 
   var form = document.getElementById("form-id");
-  form.addEventListener('submit',function(){ tg.close(); return false; });
+  form.addEventListener('submit',form_close, false);
   /*let btnED = document.getElementById("btnED");
   btnED.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
     form.requestSubmit();
