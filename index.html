@@ -94,7 +94,7 @@
 
 
   var form = document.getElementById("form-id");
-  form.addEventListener('submit',function(){return false;});
+  form.addEventListener('submit',function(){ tg.close(); return false; });
   /*let btnED = document.getElementById("btnED");
   btnED.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
     form.requestSubmit();
