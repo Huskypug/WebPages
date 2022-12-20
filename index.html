@@ -1,39 +1,116 @@
-<!--
-    Simple static Telegram WebApp. Does not verify the WebAppInitData, as a bot token would be needed for that.
--->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>python-telegram-bot Example WebApp</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Telegram WebApps API</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
+  <link rel="stylesheet" href="/assets/style.css" />
 </head>
-<script type="text/javascript">
-    const colorPicker = new iro.ColorPicker('#picker', {
-        borderColor: "#ffffff",
-        borderWidth: 1,
-        width: Math.round(document.documentElement.clientWidth / 2),
-    });
-    colorPicker.on('color:change', function (color) {
-        document.body.style.background = color.hexString;
-    });
 
-    Telegram.WebApp.ready();
-    Telegram.WebApp.MainButton.setText('Choose Color').show().onClick(function () {
-        const data = JSON.stringify({hex: colorPicker.color.hexString, rgb: colorPicker.color.rgb});
-        Telegram.WebApp.sendData(data);
-        Telegram.WebApp.close();
-    });
-</script>
-<body style="background-color: #ffffff">
-<div style="position: absolute; margin-top: 5vh; margin-left: 5vw; height: 90vh; width: 90vw; border-radius: 5vh; background-color: var(--tg-theme-bg-color); box-shadow: 0 0 2vw
- #000000;">
-    <div id="picker"
-         style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%"></div>
-</div>
+<body>
+<!--<div id="usercard"> Карта профиля, человека, который к нам обратился
+</div>-->
+<p class="text">Форма создания карточки</p> <!--Просто текст для проверки-->
+<form id="form-id" action="/webapp_data" method="GET"> <!-- -->
+  <label class="hint" for="customer">Заказчик</label><br>
+  <select id="customer" name="customer">
+  </select><br>
+  <label class="hint" for="channel">Канал</label><br>
+  <select id="channel" name="channel">
+  </select><br>
+  <label class="hint" for="desc">Описание</label><br>
+  <textarea placeholder="Обязательное поле" id="desc" name="desc"></textarea><br>
+  <label class="hint" for="descadd">Подробное Описание</label><br>
+  <textarea id="descadd" name="descadd"></textarea><br>
+  <label class="hint" for="person">На кого сразу двинуть</label><br>
+  <select id="person" name="person">
+    <option value="none" selected hidden>Выбрать</option>
+  </select><br>
+</form>
+<!--<button id="btnED" class="button">Submit</button>-->
 </body>
-<script type="text/javascript">
-    Telegram.WebApp.expand();
+
+<script>
+  let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+
+  tg.expand(); //расширяем на все окно
+
+  tg.MainButton.text = "Submmit"; //изменяем текст кнопки
+  tg.MainButton.show()
+  tg.MainButton.enable()
+  //tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
+  tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
+
+  function sendRequest(url){
+    fetch(url,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "access-control-allow-origin, access-control-allow-headers"
+      }
+    }).then(response=>{
+              if(response.status !==200) {
+                throw new Error(`HTTP ERROR:${response.status}`);
+              }
+              return response.text()
+            }
+
+    ).then(data => {
+      console.log(data);
+      const taiga = JSON.parse(data);
+      var customer = document.getElementById('customer');
+      var opt = document.createElement('option');
+      for (var i = 0; i < taiga.customers.length; i++) {
+        opt = document.createElement('option');
+        opt.value = taiga.customers[i];
+        opt.innerHTML = taiga.customers[i];
+        customer.appendChild(opt);
+      }
+      var channel = document.getElementById('channel');
+      for (i = 0; i < taiga.issueTypes.length; i++) {
+        opt = document.createElement('option');
+        opt.value = taiga.issueTypes[i];
+        opt.innerHTML = taiga.issueTypes[i];
+        channel.appendChild(opt);
+      }
+      var person = document.getElementById('person');
+      for (i = 0; i < taiga.members.length; i++) {
+        opt = document.createElement('option');
+        opt.value = taiga.members[i].userName;
+        opt.innerHTML = taiga.members[i].surName;
+        person.appendChild(opt);
+      }
+      // convert to html
+
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  sendRequest("https://bot.humanfactorlabs.ru/setup_data");
+
+
+  var form = document.getElementById("form-id");
+  form.addEventListener('submit',function(){return false;});
+  /*let btnED = document.getElementById("btnED");
+  btnED.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
+    form.requestSubmit();
+  });*/
+  Telegram.WebApp.onEvent('mainButtonClicked', function(){
+    form.requestSubmit();
+    tg.Close();
+    //tg.sendData("response");
+    //при клике на основную кнопку отправляем данные в строковом виде
+  });
+
+
+  //let usercard = document.getElementById("usercard"); //получаем блок usercard
+  //let userid = document.createElement('p'); //создаем еще параграф
+  //userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
+  //usercard.appendChild(userid); //добавляем
+
 </script>
 </html>
